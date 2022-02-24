@@ -1,26 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useState, useEffect } from "react";
+import "./App.css";
 
-function App() {
+const App: FC = () => {
+  const getTodos = () => {
+    const allTodos = localStorage.getItem("todos");
+    return allTodos ? JSON.parse(allTodos) : [];
+  };
+  const [inputData, setInputData] = useState("");
+  const [todos, setTodos] = useState<string[]>(getTodos());
+  const addItem = () => {
+    if (!inputData) {
+      alert("Please enter a todo");
+    } else {
+      const rest = [...todos, inputData];
+      setTodos(rest);
+    }
+  };
+  const deleteTodo = (todo: string) => {
+    const rest = todos.filter((t) => t !== todo);
+    setTodos(rest);
+  };
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="input-box">
+        <input
+          type="text"
+          placeholder="Enter the task"
+          value={inputData}
+          onChange={(e) => setInputData(e.target.value)}
+        />
+        <button onClick={addItem}>add</button>
+      </div>{" "}
+      <div className="todos">
+        {todos.map((todo, index) => {
+          return (
+            <div key={index}>
+              <p key={index}>{todo}</p>
+              <button onClick={() => deleteTodo(todo)}>delete</button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
