@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from "react";
 import "./App.css";
+import { AiOutlinePlus, AiOutlineDelete } from "react-icons/ai";
 
 const App: FC = () => {
   const getTodos = () => {
@@ -33,17 +34,27 @@ const App: FC = () => {
           value={inputData}
           onChange={(e) => setInputData(e.target.value)}
         />
-        <button onClick={addItem}>add</button>
+        <button onClick={addItem} className="icon">
+          {" "}
+          <AiOutlinePlus />
+        </button>
       </div>{" "}
-      <div className="todos">
-        {todos.map((todo, index) => {
-          return (
-            <div key={index}>
-              <p key={index}>{todo}</p>
-              <button onClick={() => deleteTodo(todo)}>delete</button>
-            </div>
-          );
-        })}
+      <div className="todos-container">
+        <div className="todos">
+          {todos.map((todo, index) => {
+            return (
+              <div key={index}>
+                <p key={index}>{todo}</p>
+                <button
+                  onClick={() => deleteTodo(todo)}
+                  className="icon delete-icon"
+                >
+                  <AiOutlineDelete />
+                </button>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

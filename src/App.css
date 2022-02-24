@@ -1,27 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'JetBrains Mono', monospace;
+}
+::-webkit-input-placeholder{
+  font-family: 'JetBrains Mono', monospace;
+}
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-top: 15vh;
 }
 .container div {
-  width: 800px;
-  max-width: 100%;
+  width: 90%;
+  max-width: 800px;
   margin: 2rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
+  gap: 1.5rem;
+  padding: 10px;
 }
-.input-box{
-  background-color: rgb(255, 230, 230);
+.input-box {
+  background-color: rgb(255, 242, 242);
   height: 70px;
 }
-.todos {
-  background-color: rgb(222, 255, 209);
+.input-box input {
+  width: 200px;
+  max-width: 80%;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+.icon {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(238, 255, 231);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.icon:hover {
+  background-color: rgb(193, 255, 170);
+}
+.delete-icon {
+  background-color: rgb(255, 242, 242) !important;
+}
+.delete-icon:hover {
+  background-color: rgb(255, 213, 213) !important;
+}
+.todos-container {
+  background-color: rgb(238, 255, 231);
   height: auto;
   flex-direction: column;
+  padding: 2rem 0;
 }
-p{
+p {
   margin: 5px;
+}
+.todos {
+  max-width: 400px !important;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.todos div {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
